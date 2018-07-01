@@ -3,24 +3,46 @@ const API = {
     BASE: 'localhost',
     DOMAIN: 'http',
     PORT: 3000,
-    REVENUES: {
-      TOTAL_SALES_REVENUES: {
-        url: '/calculateTotalSalesRevenues',
+    HOTELS: {
+      OVER_ALL_SALES: {
+        url: '/overAllSales',
         method: 'get',
       },
-      SERVICE_BASED_REVENUES: {
-        url: '/calculateServiceBasedRevenues',
+      TOP_DESTINATIONS: {
+        url: '/topDestinations',
         method: 'get',
       },
-      CHANNEL_BASED_REVENUES: {
-        url: '/calculateChannelBasedRevenues',
+      TOP_SUPPLIERS: {
+        url: '/topSuppliers',
         method: 'get',
       },
-      CITY_BASED_REVENUES: {
-        url: '/calculateCityBasedRevenues',
+      TOP_HOTELS: {
+        url: '/topHotels',
         method: 'get',
       },
     },
+   FLIGHTS: {
+     TOTAL_SALES: {
+      url: '/totalSales',
+      method: 'get',
+     },
+     TOP_DESTINATIONS: {
+      url: '/topDestinations',
+      method: 'get',
+     },
+     TOP_AIRLINES: {
+      url: '/topAirlines',
+      method: 'get',
+     },
+     TOP_ORIGINS: {
+      url: '/topOrigins',
+      method: 'get',
+     },
+     TOP_ROUTES: {
+      url: '/topRoutes',
+      method: 'get',
+     },
+   },
   },
 };
 export default API;

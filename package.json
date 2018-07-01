@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "start": "nodemon ./src/server/server.js",
-  "build": "webpack",
-  "lint": "eslint src/"
- },
+    "start": "nodemon ./src/server/server.js",
+    "build": "webpack",
+    "lint": "eslint src/"
+  },
   "author": "Sourabh",
   "license": "MIT",
   "devDependencies": {
@@ -52,6 +52,7 @@
     "react-datepicker": "^1.5.0",
     "react-dom": "^16.3.0",
     "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
     "react-spinners": "^0.3.2",
     "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.2",

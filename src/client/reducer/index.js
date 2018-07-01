@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import revenues from './revenues';
+import filghts from './flights';
+import hotels from './hotels';
 import dashBoard from './dashBoard';
 
 
-const reducers = combineReducers({ revenues, dashBoard });
+const reducers = combineReducers({ revenues, dashBoard, flights, hotels });
 
 export default reducers;
