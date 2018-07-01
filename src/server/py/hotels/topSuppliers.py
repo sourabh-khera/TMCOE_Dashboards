@@ -33,8 +33,9 @@ def getDataframe():
               'IOV': t[1],
             }
          });
+     data = json.dumps(topSuppliers);
      r = redis.StrictRedis(host='localhost', port=6379, db=0);
-     pickled_object = pickle.dumps(topSuppliers);
+     pickled_object = pickle.dumps(data);
      r.set('topSuppliers', pickled_object);
      print(json.dumps(topSuppliers));
 

@@ -34,8 +34,9 @@ def getDataframe():
          'AOV': t[3],
          'Number of Bookings': t[4]
          };
+     data = json.dumps(totalSales);
      r = redis.StrictRedis(host='localhost', port=6379, db=0);
-     pickled_object = pickle.dumps(totalSales);
+     pickled_object = pickle.dumps(data);
      r.set('totalSales', pickled_object);
      print(json.dumps(totalSales));
 

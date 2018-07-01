@@ -1,6 +1,6 @@
 const service = require('../services/hotels');
 
-exports.fetchOverAllsales = (req, res) => {
+exports.fetchOverAllSales = (req, res) => {
   service.getOverAllSales()
   .then(data => res.send(data))
   .catch(err => console.log(err));

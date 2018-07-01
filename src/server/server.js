@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const path = require('path');
 const webpackconfig = require('../../webpack.config');
 const webpackMiddleware = require('webpack-dev-middleware');
-
 const compiler = webpack(webpackconfig);
 const routes = require('./routes');
 
@@ -15,7 +14,7 @@ app.use(webpackMiddleware(compiler, {
   historyApiFallback: true,
 }));
 
-// routes(app);
+routes(app);
 
 const PORT = 3000;
 

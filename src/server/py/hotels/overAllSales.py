@@ -34,8 +34,9 @@ def getDataframe():
         'Number Of Rooms': t[2],
         'Number of Room Nights': t[3]
         };
+     data = json.dumps(overAllSales);
      r = redis.StrictRedis(host='localhost', port=6379, db=0);
-     pickled_object = pickle.dumps(overAllSales);
+     pickled_object = pickle.dumps(data);
      r.set('overAllSales', pickled_object);
      print(json.dumps(overAllSales));
 

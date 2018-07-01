@@ -35,8 +35,9 @@ def getDataframe():
             'TotalPassengers': t[3],
            }
          });
+     data = json.dumps(topAirlines);
      r = redis.StrictRedis(host='localhost', port=6379, db=0);
-     pickled_object = pickle.dumps(topAirlines);
+     pickled_object = pickle.dumps(data);
      r.set('topAirlines', pickled_object);
      print(json.dumps(topAirlines));
 

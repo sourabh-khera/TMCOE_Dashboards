@@ -34,9 +34,10 @@ def getDataframe():
                'TotalBookings': t[2]
              }
          });
+     data = json.dumps(topHotels);
      r = redis.StrictRedis(host='localhost', port=6379, db=0);
-     pickled_object = pickle.dumps(topHotels);
+     pickled_object = pickle.dumps(data);
      r.set('topHotels', pickled_object);
      print(json.dumps(topHotels));
 
-checkForExistingKey();
+getDataframe();

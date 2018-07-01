@@ -1,8 +1,8 @@
 const PythonShell = require('python-shell');
 
 exports.getTotalSales = () => {
-  new Promise((resolve, reject) => {
-    PythonShell.run('../py/flights/totalSales.py', (err, data) => {
+  return new Promise((resolve, reject) => {
+    PythonShell.run('./src/server/py/flights/totalSales.py', (err, data) => {
         if (err) {
           reject(err);
         }
@@ -11,8 +11,8 @@ exports.getTotalSales = () => {
   });
 }
 exports.getTopDestinations = () => {
-  new Promise((resolve, reject) => {
-    PythonShell.run('../py/flights/topDestinations.py', (err, data) => {
+  return new Promise((resolve, reject) => {
+    PythonShell.run('./src/server/py/flights/topDestinations.py', (err, data) => {
         if (err) {
           reject(err);
         }
@@ -21,8 +21,8 @@ exports.getTopDestinations = () => {
   });
 }
 exports.getTopOrigins = () => {
-  new Promise((resolve, reject) => {
-    PythonShell.run('../py/flights/topOrigins.py', (err, data) => {
+  return new Promise((resolve, reject) => {
+    PythonShell.run('./src/server/py/flights/topOrigins.py', (err, data) => {
         if (err) {
           reject(err);
         }
@@ -31,8 +31,8 @@ exports.getTopOrigins = () => {
   });
 }
 exports.getTopRoutes = () => {
-  new Promise((resolve, reject) => {
-    PythonShell.run('../py/flights/topRoutes.py', (err, data) => {
+  return new Promise((resolve, reject) => {
+    PythonShell.run('./src/server/py/flights/topRoutes.py', (err, data) => {
         if (err) {
           reject(err);
         }
@@ -41,8 +41,8 @@ exports.getTopRoutes = () => {
   });
 }
 exports.getTopAirlines = () => {
-  new Promise((resolve, reject) => {
-    PythonShell.run('../py/flights/topAirlines.py', (err, data) => {
+  return new Promise((resolve, reject) => {
+    PythonShell.run('./src/server/py/flights/topAirlines.py', (err, data) => {
         if (err) {
           reject(err);
         }

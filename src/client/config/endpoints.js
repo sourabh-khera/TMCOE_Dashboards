@@ -9,7 +9,7 @@ const API = {
         method: 'get',
       },
       TOP_DESTINATIONS: {
-        url: '/topDestinations',
+        url: '/topHotelsDestinations',
         method: 'get',
       },
       TOP_SUPPLIERS: {
@@ -27,7 +27,7 @@ const API = {
       method: 'get',
      },
      TOP_DESTINATIONS: {
-      url: '/topDestinations',
+      url: '/topFlightsDestinations',
       method: 'get',
      },
      TOP_AIRLINES: {

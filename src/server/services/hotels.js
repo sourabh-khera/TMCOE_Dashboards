@@ -1,8 +1,8 @@
 const PythonShell = require('python-shell');
 
 exports.getOverAllSales = () => {
-  new Promise((resolve, reject) => {
-    PythonShell.run('../py/hotels/overAllSales.py', (err, data) => {
+  return new Promise((resolve, reject) => {
+    PythonShell.run('./src/server/py/hotels/overAllSales.py', (err, data) => {
         if (err) {
           reject(err);
         }
@@ -11,8 +11,8 @@ exports.getOverAllSales = () => {
   });
 }
 exports.getTopDestinations = () => {
-  new Promise((resolve, reject) => {
-    PythonShell.run('../py/hotels/topDestinations.py', (err, data) => {
+  return new Promise((resolve, reject) => {
+    PythonShell.run('./src/server/py/hotels/topDestinations.py', (err, data) => {
         if (err) {
           reject(err);
         }
@@ -21,8 +21,8 @@ exports.getTopDestinations = () => {
   });
 }
 exports.getTopSuppliers = () => {
-  new Promise((resolve, reject) => {
-    PythonShell.run('../py/hotels/topSuppliers.py', (err, data) => {
+  return new Promise((resolve, reject) => {
+    PythonShell.run('./src/server/py/hotels/topSuppliers.py', (err, data) => {
         if (err) {
           reject(err);
         }
@@ -31,8 +31,8 @@ exports.getTopSuppliers = () => {
   });
 }
 exports.getTopHotels = () => {
-  new Promise((resolve, reject) => {
-    PythonShell.run('../py/hotels/topHotels.py', (err, data) => {
+  return new Promise((resolve, reject) => {
+    PythonShell.run('./src/server/py/hotels/topHotels.py', (err, data) => {
         if (err) {
           reject(err);
         }
