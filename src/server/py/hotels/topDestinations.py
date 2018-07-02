@@ -29,15 +29,14 @@ def getDataframe():
      results = cursor.fetchall();
      for t in results:
          topHotelsDestinations.append({
-           t[0]: {
-             'IOV': t[1],
+             'Destination': t[0],
+             'IBV': t[1],
              'TotalBookings': t[2],
-             }
          });
      data = json.dumps(topHotelsDestinations);
      r = redis.StrictRedis(host='localhost', port=6379, db=0);
      pickled_object = pickle.dumps(data);
      r.set('topHotelsDestinations', pickled_object);
-     print(json.dumps(topHotelsDestinations));
+     print(data);
 
 checkForExistingKey();

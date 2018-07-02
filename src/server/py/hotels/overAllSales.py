@@ -38,6 +38,6 @@ def getDataframe():
      r = redis.StrictRedis(host='localhost', port=6379, db=0);
      pickled_object = pickle.dumps(data);
      r.set('overAllSales', pickled_object);
-     print(json.dumps(overAllSales));
+     print(data);
 
 checkForExistingKey();

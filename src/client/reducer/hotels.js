@@ -1,23 +1,27 @@
 import {
   SAVE_OVER_ALL_SALES,
-  SAVE_TOP_DESTINATIONS,
+  SAVE_HOTEL_TOP_DESTINATIONS,
   SAVE_TOP_HOTELS,
   SAVE_TOP_SUPPLIERS,
 } from '../constants';
 
-const initialState = {};
+const initialState = {
+  overAllSales: {},
+  topSuppliers: [],
+  topDestinations: [],
+};
 
-const saveOverAllSales = state => {};
-const saveTopDestinations = state => {};
-const saveTopSuppliers = state => {};
+const saveOverAllSales = (state, { overAllSales }) => ({...state, overAllSales});
+const saveTopDestinations = (state, {topDestinations}) => ({...state, topDestinations});
+const saveTopSuppliers = (state, { topSuppliers }) => ({...state, topSuppliers});
 const saveTopHotels = state => {};
 
 
-const dashBoard = (state = initialState, action) => {
+const hotels = (state = initialState, action) => {
   switch (action.type) {
   case SAVE_OVER_ALL_SALES:
     return saveOverAllSales(state, action);
-  case SAVE_TOP_DESTINATIONS:
+  case SAVE_HOTEL_TOP_DESTINATIONS:
     return saveTopDestinations(state, action);
   case SAVE_TOP_HOTELS:
     return saveTopHotels(state, action);
@@ -27,4 +31,4 @@ const dashBoard = (state = initialState, action) => {
   }
 };
 
-export default dashBoard;
+export default hotels;

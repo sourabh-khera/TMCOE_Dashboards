@@ -16,7 +16,7 @@ def checkForExistingKey():
         getDataframe();
 
 topFlightsDestinations = [];
-query = 'select dest_city, sum(iov) as iov, count(booking_id) as totalBookings, count(no_of_passengers) as totalPassengers from flight_kpi group by dest_city order by iov desc limit 10';
+query = 'select dest_city, sum(iov) as iov, count(booking_id) as totalBookings, count(no_of_passengers) as totalPassengers from flight_kpi where dest_city is not null group by dest_city  order by iov desc limit 10';
 
 def createConnection():
      # hostUrl = os.environ.get('HIVEHOSTURL');

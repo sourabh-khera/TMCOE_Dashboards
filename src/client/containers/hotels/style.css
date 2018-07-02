@@ -1,0 +1,27 @@
+.displayRevenueContainer {
+  margin-top: 40px;
+  font-family: 'Roboto Mono', monospace;
+}
+.loaderContainer{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  height: 60px;
+  width: 60px;
+}
+.clearFix:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.chartsRow {
+  margin: 30px 20px 0px 20px;
+}
+
+.commonChart {
+  margin-left: 70px;
+}

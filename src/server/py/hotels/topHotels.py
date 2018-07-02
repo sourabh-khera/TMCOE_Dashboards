@@ -29,15 +29,14 @@ def getDataframe():
      results = cursor.fetchall();
      for t in results:
          topHotels.append({
-             t[0]: {
-               'IOV': t[1],
+               'Hotel': t[0]
+               'IBV': t[1],
                'TotalBookings': t[2]
-             }
          });
      data = json.dumps(topHotels);
      r = redis.StrictRedis(host='localhost', port=6379, db=0);
      pickled_object = pickle.dumps(data);
      r.set('topHotels', pickled_object);
-     print(json.dumps(topHotels));
+     print(data);
 
 getDataframe();

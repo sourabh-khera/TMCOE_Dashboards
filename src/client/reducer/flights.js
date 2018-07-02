@@ -15,9 +15,9 @@ const saveTopRoutes = state => {};
 const saveTopAirlines = state => {};
 
 
-const dashBoard = (state = initialState, action) => {
+const flights = (state = initialState, action) => {
   switch (action.type) {
-  case SAVE_OVER_ALL_SALES:
+  case SAVE_TOTAL_SALES:
     return saveTotalSales(state, action);
   case SAVE_TOP_DESTINATIONS:
     return saveTopDestinations(state, action);
@@ -31,4 +31,4 @@ const dashBoard = (state = initialState, action) => {
   }
 };
 
-export default dashBoard;
+export default flights;

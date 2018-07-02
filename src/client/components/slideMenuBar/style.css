@@ -1,0 +1,84 @@
+.slidePanelProfileImage {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+
+.userName {
+  color: #bcc2c8;
+}
+
+.textFieldStyle {
+  height: 30px;
+  background-color: #3a4148;
+}
+
+
+.searchIcon {
+  color: #bcc2c8;
+}
+
+.commonIcons {
+  color: #bcc2c8;
+  margin-right: 10px;
+  font-size: 12px;
+}
+.profileContainer {
+  padding: 10px;
+}
+
+.formPadding {
+  padding: 10px 10px 15px 10px;
+}
+.filterTypes {
+  background-color: #2f343b;
+}
+.applyButton {
+  margin: 65px;
+  width: 110px;
+}
+
+.dashboardItemsFont {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: #6cddfc;
+}
+.dashboardLeftIconContainer {
+  float: right;
+}
+
+.dashboardItemContainer {
+  float: left;
+}
+
+.dashboardItemsParentContainer {
+  padding: 10px;
+  clear:both;
+  content: '';
+  overflow: hidden;
+  background-color: #2f343b;
+}
+
+.dashboardIcon {
+  color: #6cddfc;
+  margin-right: 10px;
+  font-size: 12px;
+}
+.dashboardItemListContainer {
+  clear:both;
+  content: '';
+  overflow: hidden;
+  background-color: #2f343b;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+.dashboardTypeContainer {
+  padding: 10px;
+}
+
+.activeHotelOrFlight {
+  padding: 10px;
+  background-color: #000000;
+}

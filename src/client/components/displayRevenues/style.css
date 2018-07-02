@@ -1,0 +1,48 @@
+.revenuesContainer {
+  border-radius: 5px;
+  height: 100px;
+}
+
+.title {
+  color: #fff;
+  padding: 20px 0px 0px 3px;
+  width: 100%
+}
+
+.amount {
+  color: #fff;
+  padding: 20px 15px 0px 3px;
+}
+
+.revenuesParent {
+  margin: 30px 30px;
+}
+.statsIcon {
+  font-size: 50px;
+  margin-top: 25px;
+  color: #ffffff;
+}
+.containerBgColor {
+  background-color: #20a8d8;
+}
+
+@media only screen and (min-width: 1024px) {
+  .revenuesContainer{
+    width: 24%;
+    margin: 0 0.5%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .revenuesContainer{
+    width: 48%;
+    margin: 1%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .revenuesContainer{
+    width: 100%;
+    /*margin: 0 0.5%*/
+  }
+}

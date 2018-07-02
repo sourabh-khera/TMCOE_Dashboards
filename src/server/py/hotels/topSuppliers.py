@@ -29,14 +29,13 @@ def getDataframe():
      results = cursor.fetchall();
      for t in results:
          topSuppliers.append({
-            t[0]: {
+              'SupplierName': t[0],
               'IOV': t[1],
-            }
          });
      data = json.dumps(topSuppliers);
      r = redis.StrictRedis(host='localhost', port=6379, db=0);
      pickled_object = pickle.dumps(data);
      r.set('topSuppliers', pickled_object);
-     print(json.dumps(topSuppliers));
+     print(data);
 
 checkForExistingKey();
