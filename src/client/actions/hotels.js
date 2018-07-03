@@ -8,8 +8,8 @@ import {
 export const saveOverAllSales = overAllSales => (
   { type: SAVE_OVER_ALL_SALES, overAllSales }
 );
-export const saveTopDestinations = topDestinations => (
-  { type: SAVE_HOTEL_TOP_DESTINATIONS, topDestinations }
+export const saveTopDestinations = topHotelsDestinations => (
+  { type: SAVE_HOTEL_TOP_DESTINATIONS, topHotelsDestinations }
 );
 export const saveTopSuppliers = topSuppliers => (
   { type: SAVE_TOP_SUPPLIERS, topSuppliers }

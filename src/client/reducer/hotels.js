@@ -8,13 +8,14 @@ import {
 const initialState = {
   overAllSales: {},
   topSuppliers: [],
-  topDestinations: [],
+  topHotelsDestinations: [],
+  topHotels: [],
 };
 
 const saveOverAllSales = (state, { overAllSales }) => ({...state, overAllSales});
-const saveTopDestinations = (state, {topDestinations}) => ({...state, topDestinations});
+const saveTopDestinations = (state, {topHotelsDestinations}) => ({...state, topHotelsDestinations});
 const saveTopSuppliers = (state, { topSuppliers }) => ({...state, topSuppliers});
-const saveTopHotels = state => {};
+const saveTopHotels = (state, { topHotels }) => ({...state, topHotels});
 
 
 const hotels = (state = initialState, action) => {

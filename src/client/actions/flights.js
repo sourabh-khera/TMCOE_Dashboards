@@ -1,6 +1,6 @@
 import {
   SAVE_TOTAL_SALES,
-  SAVE_TOP_DESTINATIONS,
+  SAVE_FLIGHT_TOP_DESTINATIONS,
   SAVE_TOP_ORIGINS,
   SAVE_TOP_ROUTES,
   SAVE_TOP_AIRLINES,
@@ -9,8 +9,8 @@ import {
 export const saveTotalSales = totalSales => (
   { type: SAVE_TOTAL_SALES, totalSales }
 );
-export const saveTopDestinations = topDestinations => (
-  { type: SAVE_TOP_DESTINATIONS, topDestinations }
+export const saveTopDestinations = topFlightsDestinations => (
+  { type: SAVE_FLIGHT_TOP_DESTINATIONS, topFlightsDestinations }
 );
 export const saveTopOrigins = topOrigins => (
   { type: SAVE_TOP_ORIGINS, topOrigins }

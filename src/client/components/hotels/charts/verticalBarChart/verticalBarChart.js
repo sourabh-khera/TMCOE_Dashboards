@@ -15,12 +15,12 @@ class VerticalBarChart extends Component {
     this.height = 400 - this.margin.top - this.margin.bottom;
   }
   componentDidMount() {
-    const { topDestinations } = this.props;
-    createChart(this.height, this.width, this.margin, d3, topDestinations, this.node);
+    const { topHotelsDestinations } = this.props;
+    createChart(this.height, this.width, this.margin, d3, topHotelsDestinations, this.node);
   }
   componentDidUpdate() {
-    const { topDestinations } = this.props;
-    createChart(this.height, this.width, this.margin, d3, topDestinations, this.node);
+    const { topHotelsDestinations } = this.props;
+    createChart(this.height, this.width, this.margin, d3, topHotelsDestinations, this.node);
   }
 
   render() {
@@ -34,13 +34,13 @@ class VerticalBarChart extends Component {
 }
 
 const mapStateToProps = state => ({
-  topDestinations: state.hotels.topDestinations,
+  topHotelsDestinations: state.hotels.topHotelsDestinations,
 });
 VerticalBarChart.defaultProps = {
-  topDestinations: [],
+  topHotelsDestinations: [],
 };
 VerticalBarChart.propTypes = {
-  topDestinations: PropTypes.array,
+  topHotelsDestinations: PropTypes.array,
   // showChannelTypeLoader: PropTypes.bool,
 
 };

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import avatar from '../../assets/images/avatar.jpg';
 import DisplayMenuItems from '../../components/menuItems/menuItems';
+import { highlightHotel, highlightFlight } from '../../actions/common';
 import './style.css';
 import styles from './style';
 
@@ -15,8 +16,6 @@ class SlideMenuBar extends Component {
       showLeftIcon: true,
       openCalendar: false,
       toggleFilterTypes: false,
-      activeHotel: true,
-      activeFlight: false,
     };
   }
   handleMenuClick = () => {
@@ -28,14 +27,25 @@ class SlideMenuBar extends Component {
     this.setState({ openCalendar: !openCalendar, toggleFilterTypes: !toggleFilterTypes });
   }
   handleHotelClick = () => {
-    this.setState({ activeHotel: true, activeFlight: false });
+    const { history, activeHotelDashboard } = this.props;
+    activeHotelDashboard(true);
+    history.push('/');
   }
   handleFlightClick = () => {
-    this.setState({ activeHotel: false, activeFlight: true });
+    const { history, activeFlightDashboard } = this.props;
+    activeFlightDashboard(true);
+    history.push('/flights');
   }
   render() {
-    const { menuOpen } = this.props;
-    const { toggle, showLeftIcon, openCalendar, toggleFilterTypes, activeHotel, activeFlight } = this.state;
+    const { menuOpen, FilterTypes, activeHotel, activeFlight } = this.props;
+    const { toggle, showLeftIcon, openCalendar, toggleFilterTypes } = this.state;
+    const filters = FilterTypes.map(item => (
+      <DisplayMenuItems
+        title={item.title}
+        icon={item.icon}
+        showLeftIcon={item.showLeftIcon}
+      />
+    ));
     const renderDateFilter = openCalendar ? (
       <div>
         <DisplayMenuItems title="Month" showLeftIcon={false} />
@@ -52,16 +62,7 @@ class SlideMenuBar extends Component {
             toggleFilterTypes={toggleFilterTypes}
           />
           {renderDateFilter}
-          <DisplayMenuItems
-            title="Hotels"
-            icon="glyphicon-home"
-            showLeftIcon={false}
-          />
-          <DisplayMenuItems
-            title="Suppliers"
-            icon="glyphicon-shopping-cart"
-            showLeftIcon={false}
-          />
+          {filters}
         </div>
       )
       : null;
@@ -70,7 +71,7 @@ class SlideMenuBar extends Component {
       <div>
         <Menu
           isOpen={menuOpen}
-          //    onStateChange={state => this.handleStateChange(state)}
+          //  onStateChange={state => this.handleStateChange(state)}
           styles={styles}
           width={240}
           noOverlay
@@ -93,11 +94,11 @@ class SlideMenuBar extends Component {
           </form>
           <div className="dashboardItemsParentContainer">
             <div className="dashboardItemContainer">
-              <span className="glyphicon glyphicon-dashboard dashboardIcon" />
+              <span className="glyphicon glyphicon-dashboard commonIcons" />
               <span className="dashboardItemsFont">DashBoards</span>
             </div>
             <div className="dashboardLeftIconContainer">
-              <span className="glyphicon glyphicon-menu-down dashboardIcon" />
+              <span className="glyphicon glyphicon-menu-down commonIcons" />
             </div>
           </div>
           <div className="dashboardItemListContainer">
@@ -128,11 +129,19 @@ class SlideMenuBar extends Component {
 }
 SlideMenuBar.propTypes = {
   menuOpen: PropTypes.bool.isRequired,
+  FilterTypes: PropTypes.array.isRequired,
+  activeHotelDashboard: PropTypes.func.isRequired,
+  activeFlightDashboard: PropTypes.func.isRequired,
+  activeFlight: PropTypes.bool.isRequired,
+  activeHotel: PropTypes.bool.isRequired,
 };
 const mapStateToProps = state => ({
   menuOpen: state.dashBoard.menuOpen,
+  activeHotel: state.dashBoard.activeHotel,
+  activeFlight: state.dashBoard.activeFlight,
 });
-// const mapDispatchToProps = dispatch => ({
-//   getDateObject: dateObj => dispatch(saveDateObj(dateObj)),
-// });
-export default connect(mapStateToProps)(SlideMenuBar);
+const mapDispatchToProps = dispatch => ({
+  activeHotelDashboard: highlight => dispatch(highlightHotel(highlight)),
+  activeFlightDashboard: highlight => dispatch(highlightFlight(highlight)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(SlideMenuBar);

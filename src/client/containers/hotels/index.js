@@ -6,9 +6,10 @@ import PropTypes from 'prop-types';
 import { getOverAllSales, getTopSuppliers, getTopDestinations } from '../../actions/asyncActions/hotels';
 import SlideMenuBar from '../../components/slideMenuBar/slideMenuBar';
 import DisplayRevenue from '../../components/displayRevenues/displayRevenue';
-import PieChart from '../../components/charts/pieChart/pieChart';
-import VerticalBarChart from '../../components/charts/verticalBarChart/verticalBarChart';
+import PieChart from '../../components/hotels/charts/pieChart/pieChart';
+import VerticalBarChart from '../../components/hotels/charts/verticalBarChart/verticalBarChart';
 import './style.css';
+import FilterTypes from './fliterTypes';
 
 class HotelsDashBoard extends Component {
   componentDidMount() {
@@ -22,7 +23,7 @@ class HotelsDashBoard extends Component {
     fetchTopDestinations();
   }
   render() {
-    const { overAllSales, showLoader } = this.props;
+    const { overAllSales, showLoader, history } = this.props;
     const keys = Object.keys(overAllSales);
     const renderOverAllSales = keys.map((item, id) => {
       let bgColor;
@@ -80,7 +81,7 @@ class HotelsDashBoard extends Component {
     return (
       <div className="dasboardContainer">
         <div id="outer-container" style={{ height: '100%', overflow: 'hidden' }}>
-          <SlideMenuBar />
+          <SlideMenuBar FilterTypes={FilterTypes} history={history} />
           <main id="page-wrap" className="page" >
             {renderComponent}
           </main>
@@ -113,6 +114,7 @@ HotelsDashBoard.propTypes = {
   fetchTopDestinations: PropTypes.func.isRequired,
   // fetchCityBasedRevenues: PropTypes.func.isRequired,
   showLoader: PropTypes.bool.isRequired,
+  history: PropTypes.object.isRequired,
   // dateObj: PropTypes.object,
   // emptyTransactions: PropTypes.func.isRequired,
 };

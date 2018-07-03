@@ -17,7 +17,7 @@ class Header extends Component {
         <div className="row dashBoardHeader">
           <div className="col-xs-12 col-md-6 col-sm-6">
             <ul className="list-inline list-container leftHeader">
-              <li className="headerTitle">TMCOE</li>
+              <li className="headerTitle">TMCOE/{this.props.activeDashboard}</li>
               <li className="commonLi">
                 <span className="glyphicon glyphicon-menu-hamburger" onClick={this.handleHamburgerCLick} />
               </li>
@@ -41,8 +41,12 @@ class Header extends Component {
 
 Header.propTypes = {
   toggleMenu: PropTypes.func.isRequired,
+  activeDashboard: PropTypes.string.isRequired,
 };
+const mapStateToProps = state => ({
+  activeDashboard: state.dashBoard.activeDashboard,
+});
 const mapDispatchToProps = dispatch => ({
   toggleMenu: () => dispatch(enableDisableSlideMenu()),
 });
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

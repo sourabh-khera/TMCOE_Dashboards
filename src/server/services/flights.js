@@ -12,7 +12,7 @@ exports.getTotalSales = () => {
 }
 exports.getTopDestinations = () => {
   return new Promise((resolve, reject) => {
-    PythonShell.run('./src/server/py/flights/topDestinations.py', (err, data) => {
+    PythonShell.run('./src/server/py/flights/topDestination.py', (err, data) => {
         if (err) {
           reject(err);
         }
@@ -22,7 +22,7 @@ exports.getTopDestinations = () => {
 }
 exports.getTopOrigins = () => {
   return new Promise((resolve, reject) => {
-    PythonShell.run('./src/server/py/flights/topOrigins.py', (err, data) => {
+    PythonShell.run('./src/server/py/flights/topOrigin.py', (err, data) => {
         if (err) {
           reject(err);
         }
@@ -32,7 +32,7 @@ exports.getTopOrigins = () => {
 }
 exports.getTopRoutes = () => {
   return new Promise((resolve, reject) => {
-    PythonShell.run('./src/server/py/flights/topRoutes.py', (err, data) => {
+    PythonShell.run('./src/server/py/flights/topRoute.py', (err, data) => {
         if (err) {
           reject(err);
         }

@@ -1,11 +1,24 @@
 import fetch from 'isomorphic-fetch';
 import API from '../../config/endpoints';
-import {} from '../hotels';
-import {} from '../common';
+import {
+  saveTopRoutes,
+  saveTopOrigins,
+  saveTotalSales,
+  saveTopAirlines,
+  saveTopDestinations,
+} from '../flights';
+import {
+  enableDisableLoader,
+  enableDisableOriginLoader,
+  enableDisableAirlineLoader,
+  enableDisableSupplierLoader,
+  enableDisableDestinationLoader,
+} from '../common';
 
 export const getTotalSales = () => async dispatch => {
   const { url, method } = API.ENDPOINT.FLIGHTS.TOTAL_SALES;
   const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}:${API.ENDPOINT.PORT}${url}`;
+  dispatch(enableDisableLoader(true));
   try {
     const response = await fetch(URL, {
       method,
@@ -13,7 +26,8 @@ export const getTotalSales = () => async dispatch => {
     });
     const result = await response.json();
     const totalSales = JSON.parse(result[0]);
-    console.log(totalSales);
+    dispatch(saveTotalSales(totalSales));
+    dispatch(enableDisableLoader(false));
   } catch (error) {
     console.log(error);
   }
@@ -22,14 +36,16 @@ export const getTotalSales = () => async dispatch => {
 export const getTopDestinations = () => async dispatch => {
   const { url, method } = API.ENDPOINT.FLIGHTS.TOP_DESTINATIONS;
   const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}:${API.ENDPOINT.PORT}${url}`;
+  dispatch(enableDisableDestinationLoader(true));
   try {
     const response = await fetch(URL, {
       method,
       headers: { 'Content-Type': 'application/json' },
     });
     const result = await response.json();
-    const topDestinations = JSON.parse(result[0]);
-    console.log(topDestinations);
+    const topFlightsDestinations = JSON.parse(result[0]);
+    dispatch(saveTopDestinations(topFlightsDestinations));
+    dispatch(enableDisableDestinationLoader(false));
   } catch (error) {
     console.log(error);
   }
@@ -38,6 +54,7 @@ export const getTopDestinations = () => async dispatch => {
 export const getTopAirlines = () => async dispatch => {
   const { url, method } = API.ENDPOINT.FLIGHTS.TOP_AIRLINES;
   const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}:${API.ENDPOINT.PORT}${url}`;
+  dispatch(enableDisableAirlineLoader(true));
   try {
     const response = await fetch(URL, {
       method,
@@ -45,7 +62,8 @@ export const getTopAirlines = () => async dispatch => {
     });
     const result = await response.json();
     const topAirlines = JSON.parse(result[0]);
-    console.log(topAirlines);
+    dispatch(saveTopAirlines(topAirlines));
+    dispatch(enableDisableAirlineLoader(false));
   } catch (error) {
     console.log(error);
   }
@@ -54,6 +72,7 @@ export const getTopAirlines = () => async dispatch => {
 export const getTopOrigins = () => async dispatch => {
   const { url, method } = API.ENDPOINT.FLIGHTS.TOP_ORIGINS;
   const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}:${API.ENDPOINT.PORT}${url}`;
+  dispatch(enableDisableOriginLoader(true));
   try {
     const response = await fetch(URL, {
       method,
@@ -61,7 +80,8 @@ export const getTopOrigins = () => async dispatch => {
     });
     const result = await response.json();
     const topOrigins = JSON.parse(result[0]);
-    console.log(topOrigins);
+    dispatch(saveTopOrigins(topOrigins));
+    dispatch(enableDisableOriginLoader(false));
   } catch (error) {
     console.log(error);
   }
@@ -70,6 +90,7 @@ export const getTopOrigins = () => async dispatch => {
 export const getTopRoutes = () => async dispatch => {
   const { url, method } = API.ENDPOINT.FLIGHTS.TOP_ROUTES;
   const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}:${API.ENDPOINT.PORT}${url}`;
+  dispatch(enableDisableLoader(true));
   try {
     const response = await fetch(URL, {
       method,
@@ -77,7 +98,8 @@ export const getTopRoutes = () => async dispatch => {
     });
     const result = await response.json();
     const topRoutes = JSON.parse(result[0]);
-    console.log(topRoutes);
+    dispatch(saveTopRoutes(topRoutes));
+    dispatch(enableDisableLoader(false));
   } catch (error) {
     console.log(error);
   }

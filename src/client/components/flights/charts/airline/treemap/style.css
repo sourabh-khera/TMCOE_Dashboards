@@ -1,0 +1,26 @@
+.treeMapHeading {
+  font-family: 'Roboto Mono', monospace;
+  color: #ffffff;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.treeMapContainer {
+  padding-top: 40px;
+  padding-left: 30px;
+  min-height: 400px;
+}
+.treeMapLoaderContainer{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  height: 60px;
+  width: 60px;
+}
+
+svg {
+  font: 10px sans-serif;
+}

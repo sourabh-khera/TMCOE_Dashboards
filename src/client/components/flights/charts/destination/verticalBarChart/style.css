@@ -1,0 +1,44 @@
+.verticalBarHeading {
+  font-family: 'Roboto Mono', monospace;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.verticalBarContainer {
+  padding-top: 40px;
+  padding-left: 30px;
+  min-height: 400px;
+}
+.verticalLoaderContainer{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  height: 60px;
+  width: 60px;
+}
+
+.axis path{
+  stroke: white;
+}
+.axis text{
+  fill: white;
+}
+.axis line{
+  stroke: white;
+}
+
+
+
+.bar:hover {
+  fill: orangered ;
+}
+
+.dot1:hover {
+  fill: #fdc10a ;
+}
+.dot2:hover {
+  fill: red ;
+}

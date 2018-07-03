@@ -23,7 +23,7 @@ const displayRevenue = ({
   );
 
 displayRevenue.defaultProps = {
-  containerBgColor: { 'background-color': '#fff' },
+  containerBgColor: { backgroundColor: '#fff' },
 };
 displayRevenue.propTypes = {
   title: PropTypes.string.isRequired,
