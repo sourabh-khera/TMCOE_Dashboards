@@ -1,6 +1,6 @@
 const API = {
   ENDPOINT: {
-    BASE: 'localhost',
+    BASE: 'tmcoe.atgdmap.com',
     DOMAIN: 'http',
     PORT: 3000,
     HOTELS: {
