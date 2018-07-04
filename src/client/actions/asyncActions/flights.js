@@ -16,7 +16,7 @@ import {
 
 export const getTotalSales = () => async dispatch => {
   const { url, method } = API.ENDPOINT.FLIGHTS.TOTAL_SALES;
-  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}:${API.ENDPOINT.PORT}${url}`;
+  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}${url}`;
   dispatch(enableDisableLoader(true));
   try {
     const response = await fetch(URL, {
@@ -34,7 +34,7 @@ export const getTotalSales = () => async dispatch => {
 
 export const getTopDestinations = () => async dispatch => {
   const { url, method } = API.ENDPOINT.FLIGHTS.TOP_DESTINATIONS;
-  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}:${API.ENDPOINT.PORT}${url}`;
+  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}${url}`;
   dispatch(enableDisableDestinationLoader(true));
   try {
     const response = await fetch(URL, {
@@ -52,7 +52,7 @@ export const getTopDestinations = () => async dispatch => {
 
 export const getTopAirlines = () => async dispatch => {
   const { url, method } = API.ENDPOINT.FLIGHTS.TOP_AIRLINES;
-  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}:${API.ENDPOINT.PORT}${url}`;
+  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}${url}`;
   dispatch(enableDisableAirlineLoader(true));
   try {
     const response = await fetch(URL, {
@@ -70,7 +70,7 @@ export const getTopAirlines = () => async dispatch => {
 
 export const getTopOrigins = () => async dispatch => {
   const { url, method } = API.ENDPOINT.FLIGHTS.TOP_ORIGINS;
-  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}:${API.ENDPOINT.PORT}${url}`;
+  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}${url}`;
   dispatch(enableDisableOriginLoader(true));
   try {
     const response = await fetch(URL, {
@@ -88,7 +88,7 @@ export const getTopOrigins = () => async dispatch => {
 
 export const getTopRoutes = () => async dispatch => {
   const { url, method } = API.ENDPOINT.FLIGHTS.TOP_ROUTES;
-  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}:${API.ENDPOINT.PORT}${url}`;
+  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}${url}`;
   try {
     const response = await fetch(URL, {
       method,

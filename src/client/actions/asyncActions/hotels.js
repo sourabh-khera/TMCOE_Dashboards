@@ -14,7 +14,7 @@ import {
 
 export const getOverAllSales = () => async dispatch => {
   const { url, method } = API.ENDPOINT.HOTELS.OVER_ALL_SALES;
-  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}:${API.ENDPOINT.PORT}${url}`;
+  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}${url}`;
   dispatch(enableDisableLoader(true));
   try {
     const response = await fetch(URL, {
@@ -32,7 +32,7 @@ export const getOverAllSales = () => async dispatch => {
 
 export const getTopDestinations = () => async dispatch => {
   const { url, method } = API.ENDPOINT.HOTELS.TOP_DESTINATIONS;
-  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}:${API.ENDPOINT.PORT}${url}`;
+  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}${url}`;
   dispatch(enableDisableDestinationLoader(true));
   try {
     const response = await fetch(URL, {
@@ -50,7 +50,7 @@ export const getTopDestinations = () => async dispatch => {
 
 export const getTopSuppliers = () => async dispatch => {
   const { url, method } = API.ENDPOINT.HOTELS.TOP_SUPPLIERS;
-  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}:${API.ENDPOINT.PORT}${url}`;
+  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}${url}`;
   dispatch(enableDisableSupplierLoader(true));
   try {
     const response = await fetch(URL, {
@@ -68,7 +68,7 @@ export const getTopSuppliers = () => async dispatch => {
 
 export const getTopHotels = () => async dispatch => {
   const { url, method } = API.ENDPOINT.HOTELS.TOP_HOTELS;
-  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}:${API.ENDPOINT.PORT}${url}`;
+  const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}${url}`;
   try {
     const response = await fetch(URL, {
       method,
