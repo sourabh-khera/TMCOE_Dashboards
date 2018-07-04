@@ -23,11 +23,11 @@ export const enableDisableOriginLoader = showOriginLoader => (
 );
 
 export const enableDisableSupplierLoader = showSupplierLoader => (
-  { type: ENABLE_DISABLE_AIRLINE_LOADER, showSupplierLoader }
+  { type: ENABLE_DISABLE_SUPPLIER_LOADER, showSupplierLoader }
 );
 
 export const enableDisableAirlineLoader = showAirlineLoader => (
-  { type: ENABLE_DISABLE_SUPPLIER_LOADER, showAirlineLoader }
+  { type: ENABLE_DISABLE_AIRLINE_LOADER, showAirlineLoader }
 );
 
 export const enableDisableDestinationLoader = showDestLoader => (

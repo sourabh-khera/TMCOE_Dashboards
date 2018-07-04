@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { push as Menu } from 'react-burger-menu';
 import { connect } from 'react-redux';
+import FlatButton from 'material-ui/FlatButton';
 import PropTypes from 'prop-types';
 import avatar from '../../assets/images/avatar.jpg';
 import DisplayMenuItems from '../../components/menuItems/menuItems';
-import { highlightHotel, highlightFlight } from '../../actions/common';
+import FilterModal from '../../components/modal';
+import { highlightHotel, highlightFlight, enableDisableSlideMenu } from '../../actions/common';
 import './style.css';
 import styles from './style';
+
 
 class SlideMenuBar extends Component {
   constructor() {
@@ -16,6 +19,9 @@ class SlideMenuBar extends Component {
       showLeftIcon: true,
       openCalendar: false,
       toggleFilterTypes: false,
+      showModal: false,
+      modalType: '',
+      anchorEl: '',
     };
   }
   handleMenuClick = () => {
@@ -27,18 +33,28 @@ class SlideMenuBar extends Component {
     this.setState({ openCalendar: !openCalendar, toggleFilterTypes: !toggleFilterTypes });
   }
   handleHotelClick = () => {
-    const { history, activeHotelDashboard } = this.props;
+    const { history, activeHotelDashboard, toggleMenu } = this.props;
     activeHotelDashboard(true);
-    history.push('/');
+    toggleMenu();
+    history.push('/hotels');
   }
   handleFlightClick = () => {
-    const { history, activeFlightDashboard } = this.props;
+    const { history, activeFlightDashboard, toggleMenu } = this.props;
     activeFlightDashboard(true);
-    history.push('/flights');
+    toggleMenu();
+    history.push('/');
   }
+
+  showModal = (event, modalType) => {
+    console.log('event --->', modalType);
+    this.setState({ showModal: true, modalType, anchorEl: event.currentTarget });
+  }
+
+  hideModal = () => this.setState({ showModal: false });
+
   render() {
     const { menuOpen, FilterTypes, activeHotel, activeFlight } = this.props;
-    const { toggle, showLeftIcon, openCalendar, toggleFilterTypes } = this.state;
+    const { toggle, showLeftIcon, openCalendar, toggleFilterTypes, showModal, modalType, anchorEl } = this.state;
     const filters = FilterTypes.map(item => (
       <DisplayMenuItems
         title={item.title}
@@ -48,8 +64,22 @@ class SlideMenuBar extends Component {
     ));
     const renderDateFilter = openCalendar ? (
       <div>
-        <DisplayMenuItems title="Month" showLeftIcon={false} />
-        <DisplayMenuItems title="Year" showLeftIcon={false} />
+        <FlatButton
+          label="Month"
+          fullWidth
+          hoverColor="#000000"
+          labelStyle={{ color: '#bcc2c8', textTransform: 'none' }}
+          style={{ textAlign: 'left' }}
+          onClick={e => this.showModal(e, 'Month')}
+        />
+        <FlatButton
+          label="Year"
+          fullWidth
+          hoverColor="#000000"
+          labelStyle={{ color: '#bcc2c8', textTransform: 'none' }}
+          style={{ textAlign: 'left' }}
+          onClick={e => this.showModal(e, 'Year')}
+        />
       </div>
     ) : null;
     const renderFilterTypes = toggle ?
@@ -69,9 +99,14 @@ class SlideMenuBar extends Component {
 
     return (
       <div>
+        <FilterModal
+          anchorEl={anchorEl}
+          show={showModal}
+          onHide={this.hideModal}
+          modalType={modalType}
+        />
         <Menu
           isOpen={menuOpen}
-          //  onStateChange={state => this.handleStateChange(state)}
           styles={styles}
           width={240}
           noOverlay
@@ -102,15 +137,15 @@ class SlideMenuBar extends Component {
             </div>
           </div>
           <div className="dashboardItemListContainer">
-            <div className={activeHotel ? 'activeHotelOrFlight' : 'dashboardTypeContainer'}
-              onClick={this.handleHotelClick}>
-              <span className="glyphicon glyphicon-home commonIcons" />
-              <span className="menuItemsFont">Hotels</span>
-            </div>
             <div className={activeFlight ? 'activeHotelOrFlight' : 'dashboardTypeContainer'}
               onClick={this.handleFlightClick}>
               <span className="glyphicon glyphicon-plane commonIcons" />
               <span className="menuItemsFont">Flights</span>
+            </div>
+            <div className={activeHotel ? 'activeHotelOrFlight' : 'dashboardTypeContainer'}
+              onClick={this.handleHotelClick}>
+              <span className="glyphicon glyphicon-home commonIcons" />
+              <span className="menuItemsFont">Hotels</span>
             </div>
           </div>
           <DisplayMenuItems
@@ -134,6 +169,7 @@ SlideMenuBar.propTypes = {
   activeFlightDashboard: PropTypes.func.isRequired,
   activeFlight: PropTypes.bool.isRequired,
   activeHotel: PropTypes.bool.isRequired,
+  toggleMenu: PropTypes.func.isRequired,
 };
 const mapStateToProps = state => ({
   menuOpen: state.dashBoard.menuOpen,
@@ -143,5 +179,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   activeHotelDashboard: highlight => dispatch(highlightHotel(highlight)),
   activeFlightDashboard: highlight => dispatch(highlightFlight(highlight)),
+  toggleMenu: () => dispatch(enableDisableSlideMenu()),
+
 });
 export default connect(mapStateToProps, mapDispatchToProps)(SlideMenuBar);

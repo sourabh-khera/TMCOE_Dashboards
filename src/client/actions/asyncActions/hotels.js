@@ -60,7 +60,7 @@ export const getTopSuppliers = () => async dispatch => {
     const result = await response.json();
     const topSuppliers = JSON.parse(result[0]);
     dispatch(saveTopSuppliers(topSuppliers));
-    dispatch(enableDisableSupplierLoader(true));
+    dispatch(enableDisableSupplierLoader(false));
   } catch (error) {
     console.log(error);
   }

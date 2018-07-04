@@ -11,8 +11,8 @@ export default class DashBoard extends Component {
         <div>
           <Header />
           <Switch>
-            <Route exact path='/' component={HotelsDashBoard} />
-            <Route path='/flights' component={FlightsDashBoard} />
+            <Route exact path='/' component={FlightsDashBoard} />
+            <Route path='/hotels' component={HotelsDashBoard} />
           </Switch>
         </div>
       </Router>

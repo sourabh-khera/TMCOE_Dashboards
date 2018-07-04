@@ -8,19 +8,22 @@ import {
   ENABLE_DISABLE_AIRLINE_LOADER,
   ENABLE_DISABLE_SUPPLIER_LOADER,
   ENABLE_DISABLE_DESTINATION_LOADER,
- } from '../constants';
+} from '../constants';
 
 const initialState = {
   menuOpen: false,
   apiError: false,
-  showLoader: false,
-  activeHotel: true,
-  activeFlight: false,
-  activeDashboard: 'HOTELS',
+  showLoader: true,
+  activeHotel: false,
+  activeFlight: true,
+  activeDashboard: 'FLIGHTS',
   showOriginLoader: false,
   showSupplierLoader: false,
   showAirlineLoader: false,
   showDestLoader: false,
+  month: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  year: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018'],
+
 };
 
 const toggleSlideMenu = state => ({ ...state, menuOpen: !state.menuOpen });
@@ -31,7 +34,11 @@ const highlightFlight = (state, { highlight }) => ({...state, activeFlight: high
 const showHideLoader = (
   state,
   {
-    showLoader
+    showLoader,
+    showDestLoader,
+    showOriginLoader,
+    showAirlineLoader,
+    showSupplierLoader,
   }, type,
 ) => {
   if (type === 'dashboard') {

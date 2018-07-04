@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
 import { connect } from 'react-redux';
-// import { BounceLoader } from 'react-spinners';
+import { BounceLoader } from 'react-spinners';
 import PropTypes from 'prop-types';
 import './style.css';
 import createChart from './createChart';
@@ -27,10 +27,21 @@ class PieChart extends Component {
   }
 
   render() {
+    const { showSupplierLoader } = this.props;
+    const renderComponent = showSupplierLoader ?
+      (
+        <div className="pieLoaderContainer">
+          <BounceLoader
+            color="#ffffff"
+            loading
+          />
+        </div>
+      )
+      : <svg ref={node => { this.node = node; }} />;
     return (
       <div className="pieContainer" id="pieDiv">
         <h3 className="pieHeading">Top 5 Suppliers By IBV</h3>
-        <svg ref={node => { this.node = node; }} />
+        {renderComponent}
       </div>
     );
   }
@@ -38,13 +49,13 @@ class PieChart extends Component {
 
 const mapStateToProps = state => ({
   topSuppliers: state.hotels.topSuppliers,
-//  showChannelTypeLoader: state.revenues.showChannelTypeLoader,
+  showSupplierLoader: state.dashBoard.showSupplierLoader,
 });
 PieChart.defaultProps = {
   topSuppliers: [],
 };
 PieChart.propTypes = {
   topSuppliers: PropTypes.array,
-//  showChannelTypeLoader: PropTypes.bool,
+  showSupplierLoader: PropTypes.bool.isRequired,
 };
 export default connect(mapStateToProps)(PieChart);

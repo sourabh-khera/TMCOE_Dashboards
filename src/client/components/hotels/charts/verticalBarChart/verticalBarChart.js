@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as d3 from 'd3';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { BounceLoader } from 'react-spinners';
 import './style.css';
 import createChart from './createChart';
 
@@ -24,10 +25,21 @@ class VerticalBarChart extends Component {
   }
 
   render() {
+    const { showDestLoader } = this.props;
+    const renderComponent = showDestLoader ?
+      (
+        <div className="verticalLoaderContainer">
+          <BounceLoader
+            color="#ffffff"
+            loading
+          />
+        </div>
+      )
+      : <svg ref={node => { this.node = node; }} />;
     return (
       <div className="verticalBarContainer" id="div1">
         <h3 className="verticalBarHeading">Top 10 Destinations By IBV & Bookings</h3>
-        <svg ref={node => { this.node = node; }} />
+        {renderComponent}
       </div>
     );
   }
@@ -35,13 +47,14 @@ class VerticalBarChart extends Component {
 
 const mapStateToProps = state => ({
   topHotelsDestinations: state.hotels.topHotelsDestinations,
+  showDestLoader: state.dashBoard.showDestLoader,
 });
 VerticalBarChart.defaultProps = {
   topHotelsDestinations: [],
 };
 VerticalBarChart.propTypes = {
   topHotelsDestinations: PropTypes.array,
-  // showChannelTypeLoader: PropTypes.bool,
+  showDestLoader: PropTypes.bool.isRequired,
 
 };
 export default connect(mapStateToProps)(VerticalBarChart);

@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { getTotalSales, getTopOrigins, getTopDestinations, getTopAirlines } from '../../actions/asyncActions/flights';
 import SlideMenuBar from '../../components/slideMenuBar/slideMenuBar';
 import DisplayRevenue from '../../components/displayRevenues/displayRevenue';
-// import PieChart from '../../components/charts/pieChart/pieChart';
 import DestinationVerticalBarChart from '../../components/flights/charts/destination/verticalBarChart/verticalBarChart';
 import OriginVerticalBarChart from '../../components/flights/charts/origins/verticalBarChart/verticalBarChart';
 import TreeMap from '../../components/flights/charts/airline/treemap/treemap';
@@ -113,14 +112,12 @@ FlightsDashBoard.defaultProps = {
 const mapStateToProps = state => ({
   totalSales: state.flights.totalSales,
   showLoader: state.dashBoard.showLoader,
-  topFlightsDestinations: state.flights.topFlightsDestinations,
 });
 const mapDispatchToProps = dispatch => ({
   fetchTotalSales: () => dispatch(getTotalSales()),
   fetchTopOrigins: () => dispatch(getTopOrigins()),
   fetchTopDestinations: () => dispatch(getTopDestinations()),
   fetchTopAirlines: () => dispatch(getTopAirlines()),
-  // emptyTransactions: () => dispatch(clearTransactions()),
 });
 
 FlightsDashBoard.propTypes = {
@@ -131,7 +128,5 @@ FlightsDashBoard.propTypes = {
   fetchTopAirlines: PropTypes.func.isRequired,
   showLoader: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired,
-  // dateObj: PropTypes.object,
-  // emptyTransactions: PropTypes.func.isRequired,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(FlightsDashBoard);

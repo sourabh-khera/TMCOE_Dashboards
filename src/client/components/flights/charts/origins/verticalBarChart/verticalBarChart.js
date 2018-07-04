@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as d3 from 'd3';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { BounceLoader } from 'react-spinners';
 import './style.css';
 import createChart from './createChart';
 
@@ -24,10 +25,21 @@ class VerticalBarChart extends Component {
   }
 
   render() {
+    const { showOriginLoader } = this.props;
+    const renderComponent = showOriginLoader ?
+      (
+        <div className="verticalLoaderContainer">
+          <BounceLoader
+            color="#ffffff"
+            loading
+          />
+        </div>
+      )
+      : <svg ref={node => { this.node = node; }} />;
     return (
       <div className="verticalBarContainer" id="div1">
         <h3 className="verticalBarHeading">Top 15 Origins By IOV, Bookings, Passengers</h3>
-        <svg ref={node => { this.node = node; }} />
+        {renderComponent}
       </div>
     );
   }
@@ -35,13 +47,14 @@ class VerticalBarChart extends Component {
 
 const mapStateToProps = state => ({
   topOrigins: state.flights.topOrigins,
+  showOriginLoader: state.dashBoard.showOriginLoader,
 });
 VerticalBarChart.defaultProps = {
   topOrigins: [],
 };
 VerticalBarChart.propTypes = {
   topOrigins: PropTypes.array,
-  // showChannelTypeLoader: PropTypes.bool,
+  showOriginLoader: PropTypes.bool.isRequired,
 
 };
 export default connect(mapStateToProps)(VerticalBarChart);

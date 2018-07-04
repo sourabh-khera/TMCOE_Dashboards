@@ -11,7 +11,6 @@ import {
   enableDisableLoader,
   enableDisableOriginLoader,
   enableDisableAirlineLoader,
-  enableDisableSupplierLoader,
   enableDisableDestinationLoader,
 } from '../common';
 
@@ -26,8 +25,8 @@ export const getTotalSales = () => async dispatch => {
     });
     const result = await response.json();
     const totalSales = JSON.parse(result[0]);
-    dispatch(saveTotalSales(totalSales));
     dispatch(enableDisableLoader(false));
+    dispatch(saveTotalSales(totalSales));
   } catch (error) {
     console.log(error);
   }
@@ -90,7 +89,6 @@ export const getTopOrigins = () => async dispatch => {
 export const getTopRoutes = () => async dispatch => {
   const { url, method } = API.ENDPOINT.FLIGHTS.TOP_ROUTES;
   const URL = `${API.ENDPOINT.DOMAIN}://${API.ENDPOINT.BASE}:${API.ENDPOINT.PORT}${url}`;
-  dispatch(enableDisableLoader(true));
   try {
     const response = await fetch(URL, {
       method,
@@ -99,7 +97,6 @@ export const getTopRoutes = () => async dispatch => {
     const result = await response.json();
     const topRoutes = JSON.parse(result[0]);
     dispatch(saveTopRoutes(topRoutes));
-    dispatch(enableDisableLoader(false));
   } catch (error) {
     console.log(error);
   }
