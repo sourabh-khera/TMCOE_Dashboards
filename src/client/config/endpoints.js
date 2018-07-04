@@ -1,6 +1,6 @@
 const API = {
   ENDPOINT: {
-    BASE: 'tmcoe.atgdmap.com',
+    BASE: process.env.NODE_ENV === 'production' ? 'tmcoe.atgdmap.com' : 'localhost:3000',
     DOMAIN: 'http',
     PORT: 3000,
     HOTELS: {
